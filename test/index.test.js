@@ -9,6 +9,7 @@ module.exports = {
       onAssembled(containr => {
         let res = containr.component("componenta").hello()
         expect(res).to.equal("hello")
+        done()
       })
     }
   }

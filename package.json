@@ -3,10 +3,18 @@
   "version": "1.0.0",
   "main": "lib/index.js",
   "scripts": {
-    "test": "mocha test/**/*.test.js --ui exports --recursive --reporter spec --check-leaks"
+    "test": "mocha test/**/*.test.js --ui exports --timeout 3000 --require babel-core/register --require babel-polyfill --recursive --reporter spec --check-leaks"
   },
   "devDependencies": {
     "chai": "4.1.2",
     "mocha": "5.0.1"
+  },
+  "dependencies": {
+    "babel-cli": "6.26.0",
+    "babel-core": "6.26.0",
+    "babel-plugin-transform-decorators-legacy": "1.3.4",
+    "babel-polyfill": "6.26.0",
+    "babel-preset-env": "1.6.1",
+    "babel-preset-stage-0": "6.24.1"
   }
 }
