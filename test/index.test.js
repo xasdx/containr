@@ -1,7 +1,7 @@
-import { expect } from "chai"
-import { onAssembled } from "../lib"
+let { expect } = require("chai")
+let { onAssembled } = require("../lib")
 
-import "./components/component-a"
+require("./component/component-a")
 
 module.exports = {
   "Component decorator": {
