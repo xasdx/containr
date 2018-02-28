@@ -17,7 +17,7 @@ module.exports = {
     },
     "rejects components with duplicate names": () => {
       importModule("./component/component-a")
-      expect(() => importModule("./component/component-b")).to.throw()
+      expect(() => importModule("./component/component-b")).to.throw("already been registered")
     },
     "registers multiple instances": () => {
       importModule("./component/component-a")
@@ -26,7 +26,7 @@ module.exports = {
       expect(containr.component("componentc").hey()).to.equal("hey")
     },
     "rejects decorating non-classes": () => {
-      expect(() => importModule("./component/component-d")).to.throw()
+      expect(() => importModule("./component/component-d")).to.throw("target must be a class")
     }
   }
 }
