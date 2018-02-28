@@ -4,7 +4,7 @@ module.exports = {
   "Component decorator": {
     "registers instances in the container": done => {
       
-      let { assembled } = require("../lib")
+      let { assembled } = require("~")
       require("./component/component-a")
       
       assembled(containr => {
