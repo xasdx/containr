@@ -1,8 +1,8 @@
-let { expect } = require("chai")
+import { expect } from "chai"
 
 module.exports = {
   "Component decorator": {
-    "registers instances in container": done => {
+    "registers instances in the container": done => {
       
       let { assembled } = require("../lib")
       require("./component/component-a")

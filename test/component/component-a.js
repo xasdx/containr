@@ -1,4 +1,4 @@
-let { Component } = require("../../lib")
+import { Component } from "../../lib"
 
 @Component
 class ComponentA {
