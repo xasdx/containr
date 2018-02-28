@@ -2,20 +2,31 @@ import { expect } from "chai"
 
 let { containr } = require("~")
 
+let importModule = name => {
+  delete require.cache[require.resolve(name)]
+  require(name)
+}
+
 module.exports = {
   "beforeEach": () => containr.instances = [],
   "Component decorator": {
     "registers instances in the container": () => {
-      require("./component/component-a")
+      importModule("./component/component-a")
       let res = containr.component("componenta").hello()
       expect(res).to.equal("hello")
-
     },
     "rejects components with duplicate names": () => {
-      delete require.cache[require.resolve("./component/component-a")]
-      delete require.cache[require.resolve("./component/component-b")]
-      require("./component/component-a")
-      expect(() => require("./component/component-b")).to.throw()
+      importModule("./component/component-a")
+      expect(() => importModule("./component/component-b")).to.throw()
+    },
+    "registers multiple instances": () => {
+      importModule("./component/component-a")
+      importModule("./component/component-c")
+      expect(containr.component("componenta").hello()).to.equal("hello")
+      expect(containr.component("componentc").hey()).to.equal("hey")
+    },
+    "rejects decorating non-classes": () => {
+      expect(() => importModule("./component/component-d")).to.throw()
     }
   }
 }
