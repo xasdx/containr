@@ -1,6 +1,5 @@
 import { expect } from "chai"
-
-let { containr } = require("~")
+import { containr } from "~"
 
 let importModule = name => {
   delete require.cache[require.resolve(name)]
