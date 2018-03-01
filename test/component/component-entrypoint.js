@@ -1,10 +1,13 @@
 import { Component, EntryPoint } from "~"
 
-@Component
-@EntryPoint("main")
-class ComponentEntryPoint {
-
-  main(containr) {
-    console.log(`${containr.component("component_c").hey()} there`)
+module.exports = f => {
+  
+  @Component
+  @EntryPoint("main")
+  class ComponentEntryPoint {
+  
+    main(containr) {
+      f(containr.component("componentc").hey() + " there")
+    }
   }
 }
