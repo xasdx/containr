@@ -7,20 +7,27 @@ let importModule = name => {
 }
 
 module.exports = {
-  "beforeEach": () => containr.instances = [],
+  "beforeEach": () => {
+    containr.instances = []
+    containr.entryPoint = null
+  },
   "EntryPoint decorator": {
     "registers an onAssembled callback": () => {
       importModule("./component/component-a")
       importModule("./component/component-c")
-      importModule("./component/component-entrypoint")()
+      importModule("./component/component-entrypoint-a")()
       expect(containr.entryPoint.component).to.equal("ComponentEntryPoint")
       expect(containr.entryPoint.method).to.equal("main")
     },
-    "entryPoint callbacks are called on initialization": () => {
+    "EntryPoint is called on initialization": () => {
       importModule("./component/component-a")
       importModule("./component/component-c")
-      importModule("./component/component-entrypoint")(res => expect(res).to.equal("hey there"))
+      importModule("./component/component-entrypoint-a")(res => expect(res).to.equal("hey there"))
       initialize()
+    },
+    "rejects multiple EntryPoint definitions": () => {
+      importModule("./component/component-entrypoint-a")()
+      expect(() => importModule("./component/component-entrypoint-b")).to.throw("EntryPoint has already been defined")
     }
   }
 }
