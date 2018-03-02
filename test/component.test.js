@@ -9,7 +9,7 @@ let importModule = name => {
 module.exports = {
   "beforeEach": () => containr.instances = [],
   "Component decorator": {
-    "registers instances in the container": () => {
+    "registers an instance in the container": () => {
       importModule("./component/component-a")
       let res = containr.component("componenta").hello()
       expect(res).to.equal("hello")
