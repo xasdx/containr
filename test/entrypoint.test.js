@@ -31,6 +31,9 @@ module.exports = {
     },
     "rejects non-existing method as target": () => {
       expect(() => importModule("./component/component-entrypoint-c")).to.throw("EntryPoint targets a non-existing method")
+    },
+    "rejects decorating non-classes": () => {
+      expect(() => importModule("./component/component-entrypoint-d")).to.throw("target must be a class")
     }
   }
 }
