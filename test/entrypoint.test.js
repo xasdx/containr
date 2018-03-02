@@ -28,6 +28,9 @@ module.exports = {
     "rejects multiple EntryPoint definitions": () => {
       importModule("./component/component-entrypoint-a")()
       expect(() => importModule("./component/component-entrypoint-b")).to.throw("EntryPoint has already been defined")
+    },
+    "rejects non-existing method as target": () => {
+      expect(() => importModule("./component/component-entrypoint-c")).to.throw("EntryPoint targets a non-existing method")
     }
   }
 }
