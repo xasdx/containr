@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "lib/index.js",
   "scripts": {
-    "test": "mocha test/**/*.test.js --ui exports --timeout 3000 --require babel-core/register --require babel-polyfill --recursive --reporter spec --check-leaks"
+    "test": "mocha lib/**/*.{test,spec}.js --ui exports --timeout 3000 --require babel-core/register --require babel-polyfill --recursive --reporter spec --check-leaks"
   },
   "devDependencies": {
     "chai": "4.1.2",
