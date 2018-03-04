@@ -1,8 +1,7 @@
 import { Component, ComponentScanner } from "~"
 
-@Component
-@ComponentScanner(__dirname)
-class Application {
+class ScannerB {
   
+  @ComponentScanner(__dirname)
   greeting = "hi"
 }
