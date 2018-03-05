@@ -1,4 +1,4 @@
-import { Component, ComponentScanner } from "~"
+import { ComponentScanner } from "~"
 
 class ScannerB {
   
